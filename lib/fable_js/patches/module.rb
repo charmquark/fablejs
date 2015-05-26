@@ -14,9 +14,11 @@ module FableJS::Patches
                 end
             end
 
+
             def bool_attr_reader(*attrs)
                 bool_attr *attrs
             end
+
 
             def bool_attr_accessor(*attrs)
                 bool_attr_reader *attrs

@@ -9,5 +9,4 @@ rescue LoadError
 end
 require 'fable_js/exec'
 
-program = FableJS::Exec::Program.new(ARGV)
-program.run
+FableJS::Exec.run ARGV

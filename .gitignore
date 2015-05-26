@@ -35,5 +35,8 @@ Gemfile.lock
 .rvmrc
 
 # Sublime Text 2 project files
-.sublime-project
-.sublime-workspace
+*.sublime-project
+*.sublime-workspace
+
+# Local-only project files
+reup.bat
