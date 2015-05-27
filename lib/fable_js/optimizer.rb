@@ -1,3 +1,6 @@
+require 'fable_js/lexer'
+
+
 class FableJS::Optimizer
 
     def initialize(file, output, opts)
@@ -8,7 +11,8 @@ class FableJS::Optimizer
 
 
     def run
-        @output.puts "// #{@file}"
+        source = IO.read @file, 'r'
+        lexer = FableJS::Lexer.new source
     end
 
 end

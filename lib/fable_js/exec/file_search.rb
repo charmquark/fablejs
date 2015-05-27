@@ -21,40 +21,35 @@ module FableJS::Exec::FileSearch
 
 
     def self.show_ambiguous(ambiguous)
-        unless ambiguous.empty? then
-            FableJS::Verbosity.quietly do
-                puts "The following filenames were ambiguous:"
-                ambiguous.each do |entry|
-                    f, paths = entry
-                    puts "    #{f}:"
-                    paths.each {|p| puts "        #{p}" }
-                end
+        return false if ambiguous.empty?
+        FableJS::Verbosity.quietly do
+            puts "The following filenames were ambiguous:"
+            ambiguous.each do |entry|
+                f, paths = entry
+                puts "    #{f}:"
+                paths.each {|p| puts "        #{p}" }
             end
-            return true
         end
-        false
+        true
     end
 
 
     def self.show_found(found)
-        unless found.empty? then
-            FableJS::Verbosity.verbosely do
-                puts "Found these files:"
-                found.each {|path| puts "    #{path}" }
-            end
+        return if found.empty?
+        FableJS::Verbosity.verbosely do
+            puts "Found these files:"
+            found.each {|path| puts "    #{path}" }
         end
     end
 
 
     def self.show_missing(missing)
-        unless missing.empty? then
-            FableJS::Verbosity.quietly do
-                puts "The following files could not be found:"
-                missing.each {|f| puts "    #{f}" }
-            end
-            return true
+        return false if missing.empty?
+        FableJS::Verbosity.quietly do
+            puts "The following files could not be found:"
+            missing.each {|f| puts "    #{f}" }
         end
-        false
+        true
     end
 
 end
